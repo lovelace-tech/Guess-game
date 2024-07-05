@@ -1,15 +1,15 @@
-import React from 'react'
+import{type ReactNode, type FC} from 'react'
 interface ButtonProps {
-  children: string | string[]
+  children: ReactNode
   classname: string | string[]
 }
 
-const Button:React.FC<ButtonProps> = function (props) {
+const Button:FC<ButtonProps> = (props)=>{
     const {children,classname} = props
   return (
-    <button className=
+    <button  className=
     {
-      `bg-sky-600 border-none px-8 py-4 ${classname} uppercase text-gray-600 font-semibold`
+      `bg-stone-200 border-none px-8 py-4 ${classname} uppercase text-gray-600 font-semibold`
       }>
       {children}
     </button>

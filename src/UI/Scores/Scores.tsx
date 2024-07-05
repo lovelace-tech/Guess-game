@@ -1,10 +1,10 @@
-import React, {JSX} from 'react'
+import React, {type ReactNode} from 'react'
 
 type ScoresProps = {
-  children: JSX.Element | JSX.Element[]
+  children: ReactNode
 }
 
-const Scores:React.FC<ScoresProps> = function(props) {
+const Scores:React.FC<ScoresProps> = (props)=>{
   const {children} = props
   return (
     <div>{children}</div>

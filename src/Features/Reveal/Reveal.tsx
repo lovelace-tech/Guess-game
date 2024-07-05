@@ -1,8 +1,17 @@
-import React from 'react'
+import {type FC } from 'react'
+import generateRandomNum from '../../Utils/RandomNum'
 
-const Reveal:React.FC = function() {
+type RevealProps = {
+  userNum: string
+}
+
+const Reveal:FC<RevealProps>= (props)=>{
+  const {userNum} = props
+  console.log(userNum)
+  const secretNum = generateRandomNum()
+  console.log(secretNum)
   return (
-    <div>?</div>
+    <div>{userNum}</div>
   )
 }
 
