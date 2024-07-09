@@ -8,35 +8,46 @@ import TipMessage from "./Features/TipMessage/TipMessage";
 import Button from "./UI/Button";
 import Container from "./UI/Container";
 import Flex from "./UI/Flex/Flex";
-import Scores from "./UI/Scores/Scores";
+import GameScore from "./Features/GameScore";
+import generateRandomNum from "./Utils/RandomNum";
 
 const App:React.FC = function() {
   const [userNum,setUserNum] = useState<string>('')
+  const [score,setScore] = useState<number>(20)
+  const [reveal,setReveal] = useState<string>('?')
+  const randomNum = generateRandomNum()
+  console.log(randomNum)
 
   function handleUserNum (num:string) {
     setUserNum(num)
+  }
+  function handleScore() {
+    const guess = Number(userNum)
+    if (guess < randomNum) {
+      setScore(s=>s-1)
+    }
+    else if (guess > randomNum) {
+      setScore(s=>s-1)
+    }
+
+  }
+  function handleReveal () {
+    const guess = Number(userNum)
+    if (guess === randomNum) {
+      setReveal(userNum)
+    }
   }
   return (
     <Container classname={`mx-auto bg-green-500 p-10 h-screen`}>
       <Flex classname='justify-between'>
         <Hint/>
-        <Button classname=''>Again</Button>
+        <Button onclick={()=>{}} classname=''>Again</Button>
       </Flex>
-      <Reveal userNum = {userNum}/>
-      <GuessInput onGuess = {handleUserNum}/>
-      <TipMessage/>
-      <Scores>
-        <span>Score:</span>
-        <span>
-          <strong>20</strong>
-        </span>
-      </Scores>
-      <Scores>
-        <span>Highscore:</span>
-        <span>
-          <strong>0</strong>
-        </span>
-      </Scores>
+      <Reveal userNum = {userNum} reveal = {reveal}/>
+      <GuessInput onGuess = {handleUserNum} score={handleScore} onReveal={handleReveal}/>
+      <TipMessage userNum = {userNum}/>
+      <GameScore score={score}/>
+  
     </Container>
   )
 }

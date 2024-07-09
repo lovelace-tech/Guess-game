@@ -1,13 +1,17 @@
-import React, {type ReactNode} from 'react'
+import { type ReactNode } from "react"
+
 
 type ScoresProps = {
-  children: ReactNode
+  label:string
+  children:ReactNode
 }
 
-const Scores:React.FC<ScoresProps> = (props)=>{
-  const {children} = props
+const Scores = ({label,children}:ScoresProps)=>{
   return (
-    <div>{children}</div>
+    <div>
+      <label>{label}</label>
+      {children}
+    </div>
   )
 }
 
